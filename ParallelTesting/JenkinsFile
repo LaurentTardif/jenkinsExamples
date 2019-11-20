@@ -30,7 +30,7 @@ pipeline {
                         echo "ORacle 10"
                         sleep 5 ;
                         echo "FILE PATH /tmp/${JOBNAME}/${BUILD_NUMBER}/tests/Oracle.json " 
-                        echo "Test RESULT OK ORACLE" > /tmp/${JOBNAME}/${BUILD_NUMBER}/tests/Oracle.json
+                        sh 'echo "Test RESULT OK ORACLE" > /tmp/${JOBNAME}/${BUILD_NUMBER}/tests/Oracle.json'
                     }
                 }
                 stage('Test On Postgres') {
