@@ -29,8 +29,8 @@ pipeline {
                     steps {
                         echo "ORacle 10"
                         sleep 5 ;
-                        echo "FILE PATH /tmp/${JOBNAME}/${BUILD_NUMBER}/tests/Oracle.json " 
-                        sh 'echo "Test RESULT OK ORACLE" > /tmp/${JOBNAME}/${BUILD_NUMBER}/tests/Oracle.json'
+                        echo "FILE PATH /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/Oracle.json " 
+                        sh 'echo "Test RESULT OK ORACLE" > /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/Oracle.json'
                     }
                 }
                 stage('Test On Postgres') {
