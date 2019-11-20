@@ -5,17 +5,40 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+                sleep 12 ;
             }
         }
-        stage('Test') {
+        stage('Test UI') {
             steps {
                 echo 'Testing..'
+                sleep 10 ; 
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sleep 5; 
             }
         }
+        stage('Run Parrallel Tests') {
+            parallel {
+                stage('Test On Oracle 10') {
+                    agent {
+                        label: oracle_10 
+                    }
+                    steps {
+                        echo "ORacle 10"
+                        sleep 5 ;
+                    }
+                }
+                stage('Test On Postgres') {
+                    agent {
+                        label "Postgres"
+                    }
+                    steps {
+                        echo "Run Postgres"
+                        sleep 5 ;
+                    }
+                }
     }
 }
