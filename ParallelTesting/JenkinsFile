@@ -20,6 +20,12 @@ pipeline {
                 sleep 1; 
             }
         }
+        stage('Prepare tests reports') {
+            steps {
+                echo "mkdir /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/" 
+                sh 'mkdir -p /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/'
+            }
+        }
         stage('Run Parrallel Tests') {
             parallel {
                 stage('Test On Oracle 10') {
@@ -32,6 +38,14 @@ pipeline {
                         echo "FILE PATH /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/Oracle.json " 
                         sh 'echo "Test RESULT OK ORACLE" > /tmp/${JOB_NAME}/${BUILD_NUMBER}/tests/Oracle.json'
                     }
+                    post {
+                        success {
+                            archive "target/**/*"
+                        }
+                        failure {
+                            echo "we have an issue houston"
+                        }
+                    }   
                 }
                 stage('Test On Postgres') {
                     agent {
