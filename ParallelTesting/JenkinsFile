@@ -40,5 +40,7 @@ pipeline {
                         sleep 5 ;
                     }
                 }
+            }
+        }
     }
-}
+    
