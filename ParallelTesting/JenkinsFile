@@ -24,7 +24,7 @@ pipeline {
             parallel {
                 stage('Test On Oracle 10') {
                     agent {
-                        label: oracle_10 
+                        label "oracle_10" 
                     }
                     steps {
                         echo "ORacle 10"
