@@ -44,6 +44,12 @@ pipeline {
                 }
             }
         }
+        stage('Agregate reports ') {
+            steps {
+                echo 'Deploying reports....'
+                sleep 1; 
+            }
+        }
     }
 }
 
